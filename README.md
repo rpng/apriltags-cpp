@@ -1,13 +1,17 @@
-apriltags-cpp
-=============
 
-C++ port of the APRIL tags library, using OpenCV (and optionally, CGAL).
-
-Requirements
+Ros wrapper for apriltags-cpp
 ============
+
+Ros wrapper  of the APRIL tags library, using OpenCV (and optionally, CGAL).
+
+
+
+## Requirements
+
 
 Currently, apriltags-cpp requires the following to build:
 
+  * Ros (any version works)     
   * OpenCV >= 2.3
   * GLUT or freeglut (optional, used for test program)
   * Cairo (optional, used to print tags)
@@ -15,23 +19,23 @@ Currently, apriltags-cpp requires the following to build:
 
 You must have cmake installed to build the software as well.
 
-Building
-========
+## Building
 
 To compile the code, 
 
-    cd /path/to/apriltags-cpp
-    mkdir build
-    cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release
-    make
+    catkin build    
+    
 
-Demo/utility programs
-=====================
+## Demo/utility programs
 
 The APRIL tags library is intended to be used as a library, from C++,
 but there are also five demo/utility programs included in this
 distribution:
+
+   *    `rosrun apriltags_cpp camtest`
+   *    `rosrun apriltags_cpp tagtest`
+
+
 
    *   `tagtest` - Demonstrate tag recognition and time profiling. 
      
