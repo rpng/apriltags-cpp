@@ -30,7 +30,7 @@ enum {
 cv::Mat shrink(const cv::Mat& image, int scl) {
   cv::Mat small;
   cv::resize(image, small, cv::Size(image.cols/scl, image.rows/scl), 0, 0,
-             CV_INTER_AREA);
+             cv::INTER_AREA);
   return small;
 }
 
@@ -185,7 +185,7 @@ int main(int argc, char** argv) {
     fakeDetectionImage(tagFamily, rng, p, small);
 
     cv::Mat_<unsigned char> gsmall;
-    cv::cvtColor(small, gsmall, CV_RGB2GRAY);
+    cv::cvtColor(small, gsmall, cv::COLOR_RGB2GRAY);
 
     at::Mat gx = at::Mat::zeros(gsmall.size());
     at::Mat gy = at::Mat::zeros(gsmall.size());

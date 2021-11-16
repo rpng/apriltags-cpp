@@ -380,8 +380,8 @@ void TagDetector::getQuads_MZ(const Images& images,
   std::vector< cv::Vec4i > hierarchy;
 
   cv::findContours(thresh, contours, hierarchy,
-                   CV_RETR_CCOMP,
-                   CV_CHAIN_APPROX_SIMPLE);
+                   cv::RETR_CCOMP,
+                   cv::CHAIN_APPROX_SIMPLE);
 
   END_PROFILE(3, 0);
 
@@ -408,7 +408,7 @@ void TagDetector::getQuads_MZ(const Images& images,
                    (cj+delta)*scl,
                    (cjj+delta)*scl,
                    color,
-                   1, CV_AA);
+                   1, cv::LINE_AA);
         }
       }
     }
@@ -475,7 +475,7 @@ void TagDetector::getQuads_MZ(const Images& images,
                  (cj+delta)*scl,
                  (cjj+delta)*scl,
                  color,
-                 1, CV_AA);
+                 1, cv::LINE_AA);
 
       }
     }
@@ -766,20 +766,20 @@ void TagDetector::refineQuadL(const Images& images,
       cv::line( small, 
                 (dsegs[i].p+delta)*scl, 
                 (dsegs[i].p+delta+dsegs[i].length*dsegs[i].t)*scl, 
-                color, 1, CV_AA );
+                color, 1, cv::LINE_AA );
 
       cv::line( small, 
                 (quad.p[i]+delta)*scl, 
                 (quad.p[(i+1)%4]+delta)*scl, 
-                color, 2, CV_AA );
+                color, 2, cv::LINE_AA );
 
 
       for (size_t j=0; j<xywarrays[i].size(); ++j) {
         const XYW& pj = xywarrays[i][j];
         at::Point p = (at::Point(pj.x, pj.y) + delta)*scl;
-        cv::line( small, p-lx, p+lx, color, 1, CV_AA);
+        cv::line( small, p-lx, p+lx, color, 1, cv::LINE_AA);
         if (pj.w > 0) {
-          cv::line( small, p-ly, p+ly, color, 1, CV_AA);
+          cv::line( small, p-ly, p+ly, color, 1, cv::LINE_AA);
         }
       }
     }
@@ -1281,7 +1281,7 @@ void TagDetector::getQuads_AT(const Images& images,
       cv::line( rgbu, 
                 scl*at::Point(seg->x0, seg->y0),
                 scl*at::Point(seg->x1, seg->y1),
-                color, 1, CV_AA );
+                color, 1, cv::LINE_AA );
     }
     emitDebugImage(debugWindowName, 
                    5, 0, debugNumberFiles,
@@ -1688,7 +1688,7 @@ void TagDetector::debugShowQuads(const Images& images,
       const Quad& quad = *(quads[i]);
       cv::Scalar color = ccolors[ i % ccolors.size() ];
       for (int j=0; j<4; ++j) {
-        cv::line( rgbu, scl*quad.p[j], scl*quad.p[(j+1)%4], color, 1, CV_AA);
+        cv::line( rgbu, scl*quad.p[j], scl*quad.p[(j+1)%4], color, 1, cv::LINE_AA);
       }
     }
 
@@ -1719,7 +1719,7 @@ void TagDetector::debugShowQuads(const Images& images,
 
       for (int j=0; j<4; ++j) {
         cv::line(big, (quad.p[j]+delta)*scl, (quad.p[(j+1)%4]+delta)*scl, 
-                 CV_RGB(255,0,0), 1, CV_AA);
+                 CV_RGB(255,0,0), 1, cv::LINE_AA);
       }
 
       emitDebugImage(debugWindowName,

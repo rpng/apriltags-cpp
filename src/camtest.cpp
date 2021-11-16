@@ -151,15 +151,15 @@ int main(int argc, char** argv) {
   if (opts.frame_width && opts.frame_height) {
 
     // Use uvcdynctrl to figure this out dynamically at some point?
-    vc.set(CV_CAP_PROP_FRAME_WIDTH, opts.frame_width);
-    vc.set(CV_CAP_PROP_FRAME_HEIGHT, opts.frame_height);
+    vc.set(cv::CAP_PROP_FRAME_WIDTH, opts.frame_width);
+    vc.set(cv::CAP_PROP_FRAME_HEIGHT, opts.frame_height);
     
 
   }
 
   std::cout << "Set camera to resolution: "
-            << vc.get(CV_CAP_PROP_FRAME_WIDTH) << "x"
-            << vc.get(CV_CAP_PROP_FRAME_HEIGHT) << "\n";
+  << vc.get(cv::CAP_PROP_FRAME_WIDTH) << "x"
+  << vc.get(cv::CAP_PROP_FRAME_HEIGHT) << "\n";
 
   cv::Mat frame;
   cv::Point2d opticalCenter;
@@ -288,7 +288,7 @@ int main(int argc, char** argv) {
                      dstmat(edges[j][0],0),
                      dstmat(edges[j][1],0),
                      cvPose ? CV_RGB(0,255,0) : CV_RGB(255,0,0),
-                     1, CV_AA);
+                     1, cv::LINE_AA);
           }
 
         }

@@ -1,8 +1,8 @@
 
-Ros wrapper for apriltags-cpp
+ROS wrapper for apriltags-cpp
 ============
 
-Ros wrapper  of the APRIL tags library, using OpenCV (and optionally, CGAL).
+ROS wrapper  of the APRIL tags library, using OpenCV (and optionally, CGAL).
 
 
 

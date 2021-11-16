@@ -487,8 +487,8 @@ int main(int argc, char** argv) {
   if (opts.frame_width && opts.frame_height) {
 
     // Use uvcdynctrl to figure this out dynamically at some point?
-    capture->set(CV_CAP_PROP_FRAME_WIDTH, opts.frame_width);
-    capture->set(CV_CAP_PROP_FRAME_HEIGHT, opts.frame_height);
+    capture->set(cv::CAP_PROP_FRAME_WIDTH, opts.frame_width);
+    capture->set(cv::CAP_PROP_FRAME_HEIGHT, opts.frame_height);
     
 
   }
